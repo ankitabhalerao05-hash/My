@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Frooggyy My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', cursive;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #ff4d6d;
+    font-size: 32px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background: #555;
+    color: white;
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-800px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="message">Loading love...</h1>
+
+    <button id="yes">YES ❤️</button>
+    <button id="no">NO 😜</button>
+</div>
+
+<script>
+/* Typing effect */
+const text = "Will you be my Valentine? ❤️";
+let i = 0;
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 70);
+    }
+}
+document.getElementById("message").innerHTML = "";
+typeEffect();
+
+/* Yes button */
+document.getElementById("yes").onclick = function () {
+    document.body.innerHTML =
+        "<h1 style='font-size:50px;color:white;text-align:center;margin-top:40vh'>Yayyy ❤️ I love you so much!!! Frrooggyyy💕</h1>";
+    hearts();
+};
+
+/* No button runs away */
+const noBtn = document.getElementById("no");
+noBtn.onmouseover = function () {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+};
+
+/* Floating hearts */
+function hearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = (Math.random() * 30 + 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }, 200);
+}
+</script>
+
+</body>
+</html>
