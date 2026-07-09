@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assess your career readiness, predict your employability score, and get personalized career guidance with our AI-powered tool.">
+    <title>AI Career Guidance & Employability Predictor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- User Authentication Overlay -->
+    <div id="auth-overlay" class="auth-overlay">
+        <!-- Split Screen Container -->
+        <div class="auth-split-container">
+            <!-- Left Side: Large futuristic illustration banner -->
+            <div class="auth-banner-side">
+                <div class="auth-banner-content">
+                    <div class="logo-container-auth" style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <div class="logo-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);">
+                            <i data-lucide="compass"></i>
+                        </div>
+                        <div class="logo-text" style="text-align: left;">
+                            <h1 style="font-size: 1.75rem; margin: 0; color: #ffffff; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;">Path<span style="color: #06b6d4;">Finder</span></h1>
+                        </div>
+                    </div>
+                    <h2 class="auth-banner-title">AI Career Guidance Platform</h2>
+                    <p class="auth-banner-desc">Assess your employability index, map out skill readiness, and chart personalized academic and professional roadmaps with advanced machine learning.</p>
+                    
+                    <!-- SVG illustration of students exploring careers -->
+                    <div class="auth-svg-container">
+                        <svg viewBox="0 0 500 350" width="100%" height="100%" class="auth-futuristic-svg">
+                            <defs>
+                                <linearGradient id="svgAccGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8b5cf6"/>
+                                    <stop offset="50%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="8" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            
+                            <!-- Glowing background nodes -->
+                            <circle cx="250" cy="175" r="90" fill="url(#svgAccGrad)" opacity="0.08" filter="url(#glow)"/>
+                            <circle cx="100" cy="80" r="40" fill="#06b6d4" opacity="0.05" filter="url(#glow)"/>
+                            <circle cx="400" cy="280" r="50" fill="#8b5cf6" opacity="0.05" filter="url(#glow)"/>
+
+                            <!-- Career Roadmap winding path -->
+                            <path d="M 50,280 C 120,280 100,160 200,160 C 300,160 280,80 350,80 C 420,80 430,220 450,220" fill="none" stroke="url(#svgAccGrad)" stroke-width="3" stroke-dasharray="8 4" opacity="0.4"/>
+                            
+                            <!-- Data science charts -->
+                            <rect x="340" y="50" width="80" height="60" rx="8" fill="rgba(139, 92, 246, 0.08)" stroke="#8b5cf6" stroke-width="1.5"/>
+                            <path d="M 350,95 L 370,80 L 390,90 L 410,70" fill="none" stroke="#06b6d4" stroke-width="2"/>
+                            <circle cx="410" cy="70" r="3" fill="#06b6d4"/>
+                            
+                            <!-- Code block / brackets representing technology -->
+                            <rect x="70" y="240" width="90" height="70" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#06b6d4" stroke-width="1.5"/>
+                            <text x="80" y="270" fill="#06b6d4" font-size="10" font-family="monospace">&lt;code&gt;</text>
+                            <text x="80" y="285" fill="#a855f7" font-size="8" font-family="monospace">  predict();</text>
+                            <text x="80" y="298" fill="#06b6d4" font-size="10" font-family="monospace">&lt;/code&gt;</text>
+
+                            <!-- AI brain / compass network in center -->
+                            <g transform="translate(250, 175)">
+                                <circle cx="0" cy="0" r="45" fill="rgba(15, 23, 42, 0.6)" stroke="url(#svgAccGrad)" stroke-width="2"/>
+                                <circle cx="0" cy="0" r="30" fill="none" stroke="#8b5cf6" stroke-dasharray="4 2" stroke-width="1.5"/>
+                                <!-- Nodes -->
+                                <circle cx="-25" cy="-25" r="4" fill="#06b6d4"/>
+                                <line x1="0" y1="0" x2="-25" y2="-25" stroke="#06b6d4" stroke-width="1.5"/>
+                                <circle cx="30" cy="-15" r="5" fill="#8b5cf6"/>
+                                <line x1="0" y1="0" x2="30" y2="-15" stroke="#8b5cf6" stroke-width="1.5"/>
+                                <circle cx="-10" cy="30" r="4" fill="#a855f7"/>
+                                <line x1="0" y1="0" x2="-10" y2="30" stroke="#a855f7" stroke-width="1.5"/>
+                                <circle cx="20" cy="25" r="4" fill="#06b6d4"/>
+                                <line x1="0" y1="0" x2="20" y2="25" stroke="#06b6d4" stroke-width="1.5"/>
+                                
+                                <!-- Core target compass -->
+                                <polygon points="0,-12 4,0 0,4 -4,0" fill="#06b6d4"/>
+                                <polygon points="0,12 4,0 0,4 -4,0" fill="#8b5cf6"/>
+                            </g>
+                            
+                            <!-- Floating icons -->
+                            <g transform="translate(80, 80)">
+                                <circle cx="0" cy="0" r="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                                <!-- graduation cap -->
+                                <path d="M-8,-3 L0,-7 L8,-3 L0,1 Z M-4,-1 L-4,3 Q0,6 4,3 L4,-1" fill="none" stroke="#06b6d4" stroke-width="1.2"/>
+                            </g>
+                            
+                            <g transform="translate(420, 160)">
+                                <circle cx="0" cy="0" r="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                                <!-- cloud -->
+                                <path d="M-6,2 A3,3 0 0,1 -6,-4 A4,4 0 0,1 4,-4 A3,3 0 0,1 6,2 Z" fill="none" stroke="#8b5cf6" stroke-width="1.2"/>
+                            </g>
+                            
+                            <g transform="translate(250, 40)">
+                                <circle cx="0" cy="0" r="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                                <!-- briefcase -->
+                                <path d="M-6,-2 L-6,4 L6,4 L6,-2 Z M-3,-2 L-3,-4 L3,-4 L3,-2" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Auth Forms Card Container -->
+            <div class="auth-form-side">
+                <!-- Main Auth Card -->
+                <div class="card glass-card auth-card" id="auth-card" style="position: relative; width: 100%; border: none; box-shadow: none; background: transparent !important; max-width: 440px; margin: 0 auto;">
+                    <button class="btn btn-secondary btn-icon theme-toggle-auth" onclick="toggleTheme()" title="Toggle Theme" style="position: absolute; top: -0.5rem; right: 0; z-index: 10; border-radius: 50%; width: 36px; height: 36px; padding: 0;">
+                        <i data-lucide="sun" class="auth-theme-icon" style="width: 16px; height: 16px;"></i>
+                    </button>
+                    <!-- Login View -->
+                    <div id="login-view">
+                        <div class="auth-header">
+                            <div class="logo-icon"><i data-lucide="compass"></i></div>
+                            <h2>Welcome back</h2>
+                            <p>Enter your username and password to log in.</p>
+                        </div>
+                        <form id="login-form" onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label for="login-username">Username</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="user" class="input-icon"></i>
+                                    <input type="text" id="login-username" placeholder="johndoe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="lock" class="input-icon"></i>
+                                    <input type="password" id="login-password" placeholder="••••••••" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" style="margin-top: 1rem;">Sign in</button>
+                        </form>
+        
+                        <div class="auth-divider"><span>or</span></div>
+        
+                        <button class="btn btn-secondary w-100 google-login-btn" onclick="openGmailLogin()">
+                            <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18" style="margin-right: 8px; vertical-align: middle;">
+                                <path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.54 15 1 12 1 7.35 1 3.4 3.65 1.5 7.5l3.86 3C6.4 7.5 9 5.04 12 5.04z"/>
+                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.58v2.98h3.91c2.28-2.1 3.6-5.19 3.6-8.71z"/>
+                                <path fill="#FBBC05" d="M5.36 14.5c-.24-.72-.38-1.5-.38-2.3s.14-1.58.38-2.3L1.5 6.9c-.78 1.56-1.22 3.32-1.22 5.2s.44 3.64 1.22 5.2l3.86-3.1z"/>
+                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.92l-3.91-2.98c-1.1.74-2.52 1.18-4.05 1.18-3 0-5.6-2.46-6.64-5.46L1.5 15.82C3.4 19.65 7.35 23 12 23z"/>
+                            </svg>
+                            Continue with Gmail
+                        </button>
+        
+                        <p class="auth-switch">Don't have an account? <a href="#" onclick="switchAuthView('register')">Create one now</a></p>
+                    </div>
+                    
+                    <!-- Register View -->
+                    <div id="register-view" class="hidden">
+                        <div class="auth-header">
+                            <div class="logo-icon"><i data-lucide="compass"></i></div>
+                            <h2>Create account</h2>
+                            <p>Register to unlock personal AI analytics.</p>
+                        </div>
+                        <form id="register-form" onsubmit="handleRegister(event)">
+                            <div class="auth-grid">
+                                <div class="form-group">
+                                    <label for="register-fullname">Full Name *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="user" class="input-icon"></i>
+                                        <input type="text" id="register-fullname" placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-email">Email Address *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="mail" class="input-icon"></i>
+                                        <input type="email" id="register-email" placeholder="johndoe@gmail.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-mobile">Mobile Number *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="phone" class="input-icon"></i>
+                                        <input type="tel" id="register-mobile" placeholder="9876543210" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-domain">Preferred Sector *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="building" class="input-icon"></i>
+                                        <select id="register-domain" required>
+                                            <option value="" disabled selected>Select Sector</option>
+                                            <option value="both">Both (Private & Government)</option>
+                                            <option value="private">Private Sector (IT & Corporate)</option>
+                                            <option value="government">Government Exams (UPSC, Banking, etc.)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="grid-column: span 2;">
+                                    <label for="register-username">Username *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="user-check" class="input-icon"></i>
+                                        <input type="text" id="register-username" placeholder="johndoe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-password">Password *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="lock" class="input-icon"></i>
+                                        <input type="password" id="register-password" placeholder="••••••••" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-confirm-password">Confirm Password *</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="shield-check" class="input-icon"></i>
+                                        <input type="password" id="register-confirm-password" placeholder="••••••••" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100" style="margin-top: 1rem;">Register</button>
+                        </form>
+        
+                        <div class="auth-divider"><span>or</span></div>
+        
+                        <button class="btn btn-secondary w-100 google-login-btn" onclick="openGmailLogin()">
+                            <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18" style="margin-right: 8px; vertical-align: middle;">
+                                <path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.54 15 1 12 1 7.35 1 3.4 3.65 1.5 7.5l3.86 3C6.4 7.5 9 5.04 12 5.04z"/>
+                                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.58v2.98h3.91c2.28-2.1 3.6-5.19 3.6-8.71z"/>
+                                <path fill="#FBBC05" d="M5.36 14.5c-.24-.72-.38-1.5-.38-2.3s.14-1.58.38-2.3L1.5 6.9c-.78 1.56-1.22 3.32-1.22 5.2s.44 3.64 1.22 5.2l3.86-3.1z"/>
+                                <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.92l-3.91-2.98c-1.1.74-2.52 1.18-4.05 1.18-3 0-5.6-2.46-6.64-5.46L1.5 15.82C3.4 19.65 7.35 23 12 23z"/>
+                            </svg>
+                            Continue with Gmail
+                        </button>
+        
+                        <p class="auth-switch">Already have an account? <a href="#" onclick="switchAuthView('login')">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Google OAuth Redirection Overlay (accounts.google.com) -->
+        <div id="gmail-modal" class="google-oauth-screen hidden">
+            <div class="oauth-card">
+                <!-- Google Logo -->
+                <div class="oauth-logo">
+                    <svg viewBox="0 0 24 24" width="74" height="24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                </div>
+                
+                <!-- Step 1: Email View -->
+                <div id="oauth-email-view">
+                    <h2 class="oauth-title">Sign in</h2>
+                    <p class="oauth-subtitle">to continue to <span>PathFinder</span></p>
+                    
+                    <div class="oauth-form-group">
+                        <div class="oauth-input-wrapper">
+                            <input type="email" id="oauth-email-input" required placeholder=" " autocomplete="username">
+                            <label for="oauth-email-input">Email or phone</label>
+                        </div>
+                        <a href="#" class="oauth-link" onclick="alert('Demo Mode: Enter any Gmail address to continue.')">Forgot email?</a>
+                    </div>
+                    
+                    <p class="oauth-guest-info">Not your computer? Use Guest mode to sign in privately. <a href="#" class="oauth-link">Learn more</a></p>
+                    
+                    <div class="oauth-actions">
+                        <button class="oauth-btn-secondary" onclick="closeGmailLogin()">Cancel</button>
+                        <button class="oauth-btn-primary" onclick="submitOAuthEmail()">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Password View -->
+                <div id="oauth-password-view" class="hidden">
+                    <h2 class="oauth-title" id="oauth-welcome-title">Welcome</h2>
+                    <div class="oauth-user-badge" id="oauth-user-display-email" style="margin-bottom: 1.5rem;">
+                        <!-- Display email with icon -->
+                    </div>
+                    
+                    <div class="oauth-form-group">
+                        <div class="oauth-input-wrapper">
+                            <input type="password" id="oauth-password-input" required placeholder=" " autocomplete="current-password">
+                            <label for="oauth-password-input">Enter your password</label>
+                        </div>
+                        <div class="oauth-show-pass">
+                            <input type="checkbox" id="oauth-show-pass-check" onclick="toggleOAuthPasswordVisibility()">
+                            <label for="oauth-show-pass-check">Show password</label>
+                        </div>
+                    </div>
+                    
+                    <div class="oauth-actions">
+                        <button class="oauth-btn-secondary" onclick="backToOAuthEmail()">Back</button>
+                        <button class="oauth-btn-primary" onclick="submitOAuthPassword()">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Loading View -->
+                <div id="oauth-loading-view" class="hidden" style="text-align: center; padding: 2rem 0;">
+                    <div class="oauth-spinner" style="margin: 0 auto;"></div>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #5f6368; font-family: Roboto, Arial, sans-serif;">Redirecting you back to PathFinder...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container hidden" id="app-main-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Path<span>Finder</span></h1>
+                    <p>AI Career Guidance & Employability Predictor</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary btn-icon" id="btn-theme-toggle" title="Toggle Light/Dark Theme" onclick="toggleTheme()">
+                    <i data-lucide="sun" id="theme-toggle-icon"></i>
+                </button>
+                <button class="btn btn-secondary btn-icon" id="btn-api-toggle" title="AI Settings" onclick="toggleApiPanel()">
+                    <i data-lucide="cpu"></i>
+                </button>
+                <div class="header-badge">
+                    <span class="pulse-dot" id="engine-status-dot"></span>
+                    <span id="engine-status-text">Offline Mode</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- AI Engine Settings Panel (Collapsible) -->
+        <section id="api-config-panel" class="card glass-card api-panel hidden fade-in">
+            <div class="api-panel-header">
+                <h3><i data-lucide="key-round"></i> AI Engine Settings</h3>
+                <button class="btn-close" onclick="toggleApiPanel()"><i data-lucide="x"></i></button>
+            </div>
+            <p class="api-panel-desc">Enter your <strong>Google Gemini API Key</strong> to enable live LLM Career Counseling, personalized profile generation, and real-time upskilling roadmaps. Your key is stored locally in your browser and is never sent to any server except the official Google API.</p>
+            <div class="form-group">
+                <label for="input-api-key">Gemini API Key</label>
+                <div class="input-wrapper">
+                    <i data-lucide="lock" class="input-icon"></i>
+                    <input type="password" id="input-api-key" placeholder="AIzaSy...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input-api-model">Gemini Model</label>
+                <div class="input-wrapper">
+                    <i data-lucide="brain" class="input-icon"></i>
+                    <select id="input-api-model">
+                        <option value="gemini-2.0-flash" selected>Gemini 2.0 Flash (Recommended)</option>
+                        <option value="gemini-1.5-flash">Gemini 1.5 Flash (Standard)</option>
+                        <option value="gemini-1.5-flash-latest">Gemini 1.5 Flash (Latest)</option>
+                        <option value="gemini-1.5-pro">Gemini 1.5 Pro (High Intelligence)</option>
+                        <option value="gemini-1.0-pro">Gemini 1.0 Pro (Legacy)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="api-panel-actions">
+                <button class="btn btn-primary" onclick="saveApiKey()">Save Settings</button>
+                <button class="btn btn-secondary" onclick="clearApiKey()">Clear Key</button>
+            </div>
+        </section>
+
+        <!-- Portal Layout (Sidebar + Tabs) -->
+        <div class="portal-layout">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="portal-sidebar card glass-card">
+                <!-- SaaS Workspace Selector -->
+                <div class="sidebar-workspace-header">
+                    <div class="workspace-avatar" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><i data-lucide="terminal" style="width: 14px; height: 14px; color: white;"></i></div>
+                    <div class="workspace-info" style="text-align: left; margin-left: 8px;">
+                        <h4 style="font-size: 0.85rem; font-weight: 700; color: white; margin: 0; line-height: 1.2;">PathFinder Workspace</h4>
+                        <p style="font-size: 0.65rem; color: var(--text-muted); margin: 0; line-height: 1.2;">Pro AI Subscription</p>
+                    </div>
+                    <i data-lucide="chevrons-up-down" style="width: 14px; height: 14px; margin-left: auto; color: var(--text-muted); cursor: pointer;"></i>
+                </div>
+
+                <div class="user-profile-summary">
+                    <div class="user-avatar-container" onclick="switchToTab('profile')">
+                        <img id="user-sidebar-avatar" src="" alt="Avatar" class="user-avatar hidden">
+                        <div id="user-sidebar-avatar-fallback" class="user-avatar-fallback"><i data-lucide="user"></i></div>
+                        <div class="avatar-edit-overlay"><i data-lucide="camera"></i></div>
+                    </div>
+                    <h3 id="user-sidebar-name">Guest User</h3>
+                    <p id="user-sidebar-role">Candidate Portal</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="nav-item active" id="tab-btn-assessment" onclick="switchToTab('assessment')">
+                        <i data-lucide="activity"></i> <span>Career Predictor</span>
+                    </button>
+                    <button class="nav-item" id="tab-btn-resume" onclick="switchToTab('resume')">
+                        <i data-lucide="file-text"></i> <span>Resume Analyzer</span>
+                    </button>
+                    <button class="nav-item" id="tab-btn-history" onclick="switchToTab('history')">
+                        <i data-lucide="history"></i> <span>Assessment History</span>
+                    </button>
+                    <button class="nav-item" id="tab-btn-profile" onclick="switchToTab('profile')">
+                        <i data-lucide="user-cog"></i> <span>Profile & Portfolio</span>
+                    </button>
+                    
+                    <div style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                        <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em; padding-left: 0.5rem; margin-bottom: 0.25rem;">Information</span>
+                        <button class="nav-item" id="tab-btn-about" onclick="switchToTab('about')" style="padding: 0.6rem 0.85rem; font-size: 0.8rem; font-weight: 500;">
+                            <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i> <span>About Us</span>
+                        </button>
+                        <button class="nav-item" id="tab-btn-contact" onclick="switchToTab('contact')" style="padding: 0.6rem 0.85rem; font-size: 0.8rem; font-weight: 500;">
+                            <i data-lucide="mail" style="width: 14px; height: 14px;"></i> <span>Contact Us</span>
+                        </button>
+                    </div>
+                </nav>
+                <button class="btn btn-secondary logout-btn" onclick="handleLogout()">
+                    <i data-lucide="log-out"></i> <span>Logout</span>
+                </button>
+            </aside>
+
+            <!-- Main Content Panels -->
+            <div class="portal-content">
+                
+                <!-- TAB 1: CAREER PREDICTOR PANEL -->
+                <div id="panel-assessment" class="tab-panel active">
+                    
+                    <!-- Gamified Dashboard Section (Active initially) -->
+                    <section id="gamified-dashboard" class="fade-in">
+                        <!-- Upper Summary Grid -->
+                        <div class="grid-3" style="margin-bottom: 2rem;">
+                            <!-- Level Card -->
+                            <div class="card glass-card level-card flex-center">
+                                <div class="badge-glowing-glow" style="background: rgba(139,92,246,0.3); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(139,92,246,0.4); margin-bottom: 1rem;">
+                                    <i data-lucide="crown" style="width: 36px; height: 36px; color: #fbbf24;"></i>
+                                </div>
+                                <span class="stat-label">Current Level</span>
+                                <h2 style="font-size: 1.75rem; margin: 0.25rem 0;" id="user-gamified-level">Beginner</h2>
+                                <span class="stat-subtext" id="user-xp-to-next">0 / 500 XP to next level</span>
+                                <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 0.75rem; overflow: hidden;">
+                                    <div id="user-level-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #8b5cf6, #06b6d4); transition: var(--transition-smooth);"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- XP / Streak Card -->
+                            <div class="card glass-card xp-streak-card flex-center">
+                                <div style="display: flex; gap: 1.5rem; justify-content: center; width: 100%;">
+                                    <div style="text-align: center;">
+                                        <div style="background: rgba(6,182,212,0.1); width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); margin: 0 auto 0.5rem auto;">
+                                            <i data-lucide="zap"></i>
+                                        </div>
+                                        <span class="stat-label">Total XP</span>
+                                        <h3 style="font-size: 1.35rem; margin-top: 0.25rem;" id="user-gamified-xp">0 XP</h3>
+                                    </div>
+                                    <div style="width: 1px; background: var(--border-color); height: 70px; align-self: center;"></div>
+                                    <div style="text-align: center;">
+                                        <div style="background: rgba(244,63,94,0.1); width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #f43f5e; margin: 0 auto 0.5rem auto;">
+                                            <i data-lucide="flame" class="float-group"></i>
+                                        </div>
+                                        <span class="stat-label">Streak</span>
+                                        <h3 style="font-size: 1.35rem; margin-top: 0.25rem;" id="user-gamified-streak">1 Day</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1rem; line-height: 1.4;">Answer correctly to unlock achievements & XP badges!</p>
+                            </div>
+
+                            <!-- Action Arena Card -->
+                            <div class="card glass-card arena-action-card flex-center" style="background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(168,85,247,0.08) 100%);">
+                                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 0.75rem;">
+                                    <i data-lucide="gamepad-2"></i>
+                                </div>
+                                <h3>Assessment Arena</h3>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin-bottom: 1.25rem; max-width: 200px;">Challenge your skills, earn XP and find your best career path.</p>
+                                <div style="display: flex; gap: 0.5rem; width: 100%;">
+                                    <button class="btn btn-primary flex-1 btn-sm" onclick="openQuizSetupModal()" style="display: flex; align-items: center; justify-content: center; gap: 6px;"><i data-lucide="play" style="width:12px; height:12px;"></i> Start Quiz</button>
+                                    <button class="btn btn-secondary flex-1 btn-sm" onclick="showManualAssessmentForm()"><i data-lucide="file-text" style="width:12px; height:12px;"></i> Manual Form</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Row 2: Badges & Leaderboard -->
+                        <div class="grid-2" style="margin-bottom: 2rem;">
+                            <!-- Badges Grid -->
+                            <div class="card glass-card">
+                                <h3 class="card-title"><i data-lucide="award"></i> Achievement Badges</h3>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Earn standard certifications by completing assessment challenges.</p>
+                                <div class="badges-grid-container" id="badges-grid">
+                                    <!-- Badges dynamically rendered here -->
+                                </div>
+                            </div>
+
+                            <!-- Leaderboard Block -->
+                            <div class="card glass-card">
+                                <h3 class="card-title"><i data-lucide="trophy" style="color: #fbbf24;"></i> Global Leaderboard</h3>
+                                <div class="leaderboard-podiums" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; margin-top: 0.5rem;">
+                                    <!-- Podiums dynamically loaded -->
+                                </div>
+                                <div style="overflow-x: auto; max-height: 250px;">
+                                    <table class="leaderboard-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+                                        <thead>
+                                            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                                <th style="padding: 6px 12px;">Rank</th>
+                                                <th style="padding: 6px 12px;">Name</th>
+                                                <th style="padding: 6px 12px; text-align: center;">XP</th>
+                                                <th style="padding: 6px 12px; text-align: center;">Ready %</th>
+                                                <th style="padding: 6px 12px; text-align: center;">Badges</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="leaderboard-rows-body">
+                                            <!-- Dynamically generated rows -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quiz Interface Section (Hidden initially) -->
+                    <section id="quiz-interface-section" class="card glass-card fade-in hidden" style="padding: 2.5rem; max-width: 720px; margin: 0 auto;">
+                        <!-- Header / Tracker -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <span class="hero-badge" id="quiz-question-counter">Question 1 of 5</span>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: #f43f5e; font-weight: 700; font-size: 1.05rem;" id="quiz-timer-container">
+                                <i data-lucide="timer" class="float-group" style="width: 18px; height: 18px;"></i>
+                                <span id="quiz-countdown">20s</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress bar -->
+                        <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 2.5rem; overflow: hidden;">
+                            <div id="quiz-progress-indicator" style="width: 20%; height: 100%; background: var(--accent); transition: var(--transition-smooth);"></div>
+                        </div>
+
+                        <!-- Question card -->
+                        <div class="quiz-question-card" id="quiz-question-card" style="margin-bottom: 2.5rem;">
+                            <h3 id="quiz-question-text" style="font-size: 1.25rem; font-weight: 700; color: white; line-height: 1.4; margin-bottom: 1.5rem;">Which data structure operates on a First-In, First-Out (FIFO) basis?</h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="quiz-options-container">
+                                <!-- Option cards dynamically loaded -->
+                            </div>
+                        </div>
+
+                        <!-- Quiz Navigation Actions -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                            <span style="font-size: 0.8rem; font-weight: 500; font-style: italic; color: var(--text-secondary);" id="quiz-motivational-msg">Believe in yourself!</span>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-secondary btn-sm" id="btn-quiz-prev" onclick="prevQuizQuestion()" disabled><i data-lucide="arrow-left" style="width: 12px; height: 12px; vertical-align: middle;"></i> Prev</button>
+                                <button class="btn btn-primary btn-sm" id="btn-quiz-next" onclick="nextQuizQuestion()">Next <i data-lucide="arrow-right" style="width: 12px; height: 12px; vertical-align: middle;"></i></button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Assessment Form Panel (Hidden initially) -->
+                    <section id="assessment-section" class="card glass-card fade-in hidden">
+                        <div class="card-header">
+                            <div class="header-icon"><i data-lucide="user-check"></i></div>
+                            <div>
+                                <h2>Candidate Profile Builder</h2>
+                                <p>Fill in your details to run the career predictor model. Paste a Gemini API Key (above) to enable full LLM evaluation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Stepper Progress -->
+                        <div class="stepper">
+                            <div class="step active" id="step-indicator-1">
+                                <div class="step-num">1</div>
+                                <div class="step-label">Education</div>
+                            </div>
+                            <div class="step-connector"></div>
+                            <div class="step" id="step-indicator-2">
+                                <div class="step-num">2</div>
+                                <div class="step-label">Technical Skills</div>
+                            </div>
+                            <div class="step-connector"></div>
+                            <div class="step" id="step-indicator-3">
+                                <div class="step-num">3</div>
+                                <div class="step-label">Experience & Aptitude</div>
+                            </div>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="profile-form" onsubmit="return false;">
+                            <!-- Step 1: Academic & Education -->
+                            <div class="form-step active" id="form-step-1">
+                                <!-- Banner Illustration -->
+                                <div class="step-banner">
+                                    <div class="banner-visual">
+                                        <svg viewBox="0 0 800 120" class="banner-svg">
+                                            <defs>
+                                                <linearGradient id="gradStep1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stop-color="#6366f1"/>
+                                                    <stop offset="100%" stop-color="#a855f7"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M 0,60 Q 150,105 300,60 T 600,60 T 800,60" fill="none" stroke="url(#gradStep1)" stroke-width="2" stroke-dasharray="10 5" class="anim-dash-path"/>
+                                            <g transform="translate(150, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="6s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" stroke-width="1.5"/>
+                                                    <!-- Graduation Cap Icon -->
+                                                    <path d="M-12,-4 L0,-10 L12,-4 L0,2 Z" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+                                                    <path d="M-6,-1 L-6,5 Q0,9 6,5 L6,-1" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+                                                    <line x1="12" y1="-4" x2="12" y2="4" stroke="#6366f1" stroke-width="1.5"/>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Academic Credentials</text>
+                                                </g>
+                                            </g>
+                                            <g transform="translate(520, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,4; 0,0" dur="7s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" stroke-width="1.5"/>
+                                                    <!-- Map/Compass Icon -->
+                                                    <circle cx="0" cy="0" r="10" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+                                                    <path d="M-4,4 L4,-4 M-2,2 L2,-2" stroke="#a855f7" stroke-width="1.5"/>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Goal Alignment Target</text>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label for="input-name">Full Name</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="user" class="input-icon"></i>
+                                            <input type="text" id="input-name" placeholder="John Doe" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-degree">Current/Target Degree</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="graduation-cap" class="input-icon"></i>
+                                            <select id="input-degree" required>
+                                                <option value="" disabled selected>Select Degree</option>
+                                                <option value="High School">High School / 12th Std</option>
+                                                <option value="B.S.">Bachelor of Science (B.S. / B.Sc / B.Tech)</option>
+                                                <option value="B.A.">Bachelor of Arts (B.A.)</option>
+                                                <option value="B.B.A.">Bachelor of Business Admin (B.B.A. / B.Com)</option>
+                                                <option value="M.S.">Master of Science (M.S. / M.Sc / M.Tech)</option>
+                                                <option value="Ph.D.">Doctor of Philosophy (Ph.D.)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-3">
+                                    <div class="form-group">
+                                        <label for="input-major">Field of Study / Major</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="book-open" class="input-icon"></i>
+                                            <select id="input-major" required>
+                                                <option value="" disabled selected>Select Major</option>
+                                                <option value="Computer Science">Computer Science / IT</option>
+                                                <option value="Engineering">Engineering (Mech/ECE/Civil)</option>
+                                                <option value="Science">Sciences (Physics/Math/Bio)</option>
+                                                <option value="Arts & Humanities">Arts / Humanities / Languages</option>
+                                                <option value="Commerce & Finance">Commerce / Finance / Economics</option>
+                                                <option value="Business Administration">Business Administration</option>
+                                                <option value="Education">Education / Pedagogy</option>
+                                                <option value="Other">Other / General</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-specialization">Subject Specialization</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="bookmark" class="input-icon"></i>
+                                            <input type="text" id="input-specialization" placeholder="e.g., Physics, Java, History" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-gpa">GPA / Academic Score (Scale 4.0 or %)</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="award" class="input-icon"></i>
+                                            <input type="text" id="input-gpa" placeholder="e.g., 3.60 or 85%" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label for="input-sector">Preferred Career Sector</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="building" class="input-icon"></i>
+                                            <select id="input-sector" required>
+                                                <option value="both" selected>Both (Private & Government)</option>
+                                                <option value="private">Private Sector (Corporate / IT / Business)</option>
+                                                <option value="government">Government Exams (UPSC, MPSC, Railways, Teaching)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-exam-interest">Primary Target Exam (If Government)</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="scroll" class="input-icon"></i>
+                                            <select id="input-exam-interest">
+                                                <option value="none">Not Applicable (Private Sector)</option>
+                                                <option value="upsc">UPSC Civil Services (IAS/IPS)</option>
+                                                <option value="mpsc">MPSC State Services (DySP/Deputy Collector)</option>
+                                                <option value="railway">Railway Recruitment Board (RRB)</option>
+                                                <option value="teaching">Government Teacher (TET/NET)</option>
+                                                <option value="banking">Banking Exams (SBI PO/IBPS)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <div></div>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                        Next Step <i data-lucide="arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Technical Skills -->
+                            <div class="form-step" id="form-step-2">
+                                <!-- Banner Illustration -->
+                                <div class="step-banner">
+                                    <div class="banner-visual">
+                                        <svg viewBox="0 0 800 120" class="banner-svg">
+                                            <defs>
+                                                <linearGradient id="gradStep2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stop-color="#00f2fe"/>
+                                                    <stop offset="100%" stop-color="#6366f1"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M 50,20 L 750,20 L 750,100 L 50,100 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                            <line x1="200" y1="20" x2="200" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                            <line x1="400" y1="20" x2="400" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                            <line x1="600" y1="20" x2="600" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                            <g transform="translate(150, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="6s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(0, 242, 254, 0.1)" stroke="#00f2fe" stroke-width="1.5"/>
+                                                    <!-- Coding Terminal Brackets Icon -->
+                                                    <path d="M-8,-6 L-14,0 L-8,6 M8,-6 L14,0 L8,6" fill="none" stroke="#00f2fe" stroke-width="2"/>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Domain Skill Matching</text>
+                                                </g>
+                                            </g>
+                                            <g transform="translate(520, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,4; 0,0" dur="7s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" stroke-width="1.5"/>
+                                                    <!-- Gear Icon -->
+                                                    <g style="transform-origin: 0px 0px;">
+                                                        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+                                                        <circle cx="0" cy="0" r="8" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+                                                        <path d="M-4,-4 L4,4 M4,-4 L-4,4" stroke="#6366f1" stroke-width="1.5"/>
+                                                    </g>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Aptitude & Competencies</text>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Your Core Technical / Subject Skills</label>
+                                    <p class="form-help-text">Select all the skills you have an intermediate or advanced grasp of. These apply to both technical roles and government exam subjects.</p>
+                                    
+                                    <div class="skills-selector-container">
+                                        <div class="skills-category-title">Programming, Data & Design (Private)</div>
+                                        <div class="skills-grid" id="skills-grid-tech">
+                                            <!-- Dynamic Tech Skills -->
+                                        </div>
+                                        
+                                        <div class="skills-category-title">General Studies & Academics (Govt / Teaching)</div>
+                                        <div class="skills-grid" id="skills-grid-tools">
+                                            <!-- Dynamic Tool/Exam Skills -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                                        <i data-lucide="arrow-left"></i> Previous
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                        Next Step <i data-lucide="arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Experience & Aptitude -->
+                            <div class="form-step" id="form-step-3">
+                                <!-- Banner Illustration -->
+                                <div class="step-banner">
+                                    <div class="banner-visual">
+                                        <svg viewBox="0 0 800 120" class="banner-svg">
+                                            <defs>
+                                                <linearGradient id="gradStep3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stop-color="#10b981"/>
+                                                    <stop offset="100%" stop-color="#a855f7"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M 0,90 Q 200,20 400,90 T 800,90" fill="none" stroke="url(#gradStep3)" stroke-width="2" class="anim-dash-path"/>
+                                            <g transform="translate(150, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="6s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="1.5"/>
+                                                    <!-- Briefcase Folder Icon -->
+                                                    <path d="M-10,-4 L-10,6 L10,6 L10,-4 Z M-4,-4 L-4,-8 L4,-8 L4,-4" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Projects & Internships</text>
+                                                </g>
+                                            </g>
+                                            <g transform="translate(520, 60)">
+                                                <g>
+                                                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,4; 0,0" dur="7s" repeatCount="indefinite"/>
+                                                    <circle cx="0" cy="0" r="28" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" stroke-width="1.5"/>
+                                                    <!-- Brain Icon -->
+                                                    <path d="M-6,0 Q-10,-6 0,-6 Q10,-6 6,0 Q10,6 0,6 Q-10,6 -6,0 Z" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+                                                    <text x="36" y="5" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Soft Skills Profile</text>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="grid-3">
+                                    <div class="form-group">
+                                        <label for="input-projects">Projects / Research Papers</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="folder-git" class="input-icon"></i>
+                                            <input type="number" id="input-projects" min="0" max="10" placeholder="3" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-internships">Completed Internships / Teaching</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="briefcase" class="input-icon"></i>
+                                            <input type="number" id="input-internships" min="0" max="4" placeholder="1" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-certs">Certifications / Exam Attempts</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="file-badge" class="input-icon"></i>
+                                            <input type="number" id="input-certs" min="0" max="10" placeholder="2" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label for="input-experience">Work / Exam Prep Experience (Months)</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="calendar" class="input-icon"></i>
+                                            <input type="number" id="input-experience" min="0" max="60" placeholder="0" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-aptitude">GK & Quantitative Aptitude (1-10)</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="brain" class="input-icon"></i>
+                                            <input type="range" id="input-aptitude" min="1" max="10" value="6" class="slider">
+                                            <span class="range-value" id="aptitude-val">6/10</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="soft-skills-container">
+                                    <h3 class="subsection-title">Soft Skills & Extracurriculars</h3>
+                                    <div class="grid-2">
+                                        <div class="form-group">
+                                            <label for="input-comm">Communication Skill</label>
+                                            <input type="range" id="input-comm" min="1" max="10" value="7" class="slider">
+                                            <span class="range-value" id="comm-val">7/10</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-problem">Problem Solving & Logic</label>
+                                            <input type="range" id="input-problem" min="1" max="10" value="7" class="slider">
+                                            <span class="range-value" id="problem-val">7/10</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-teamwork">Teamwork & Collaboration</label>
+                                            <input type="range" id="input-teamwork" min="1" max="10" value="8" class="slider">
+                                            <span class="range-value" id="teamwork-val">8/10</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-leadership">Leadership & Extracurriculars</label>
+                                            <input type="range" id="input-leadership" min="1" max="10" value="6" class="slider">
+                                            <span class="range-value" id="leadership-val">6/10</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                                        <i data-lucide="arrow-left"></i> Previous
+                                    </button>
+                                    <button type="button" class="btn btn-success" id="btn-submit" onclick="submitAssessment()">
+                                        <span id="btn-submit-text">Analyze Profile</span>
+                                        <i data-lucide="activity" id="btn-submit-icon"></i>
+                                        <div class="spinner hidden" id="btn-submit-spinner"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Results Dashboard Section (Hidden initially) -->
+                    <section id="results-section" class="hidden">
+                        <!-- Premium Hero Banner -->
+                        <div class="dashboard-hero-banner fade-in">
+                            <div class="hero-banner-content">
+                                <span class="hero-badge"><i data-lucide="sparkles" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> AI Insights Engine</span>
+                                <h2>Your Career Dashboard</h2>
+                                <p id="dashboard-subtitle">Aesthetic evaluation, keyword scans, and career pathing powered by Google Gemini AI models.</p>
+                                <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
+                                    <button class="btn btn-primary" onclick="resetAssessment()">
+                                        <i data-lucide="refresh-cw"></i> Start New Assessment
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="hero-banner-illustration">
+                                <!-- Animated AI assistant SVG -->
+                                <svg viewBox="0 0 200 150" width="160" height="120" class="hero-ai-svg">
+                                    <defs>
+                                        <linearGradient id="heroAccGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#06b6d4"/>
+                                            <stop offset="100%" stop-color="#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Robot face -->
+                                    <rect x="50" y="40" width="100" height="70" rx="16" fill="url(#heroAccGrad)" opacity="0.15" stroke="url(#heroAccGrad)" stroke-width="2"/>
+                                    <!-- Screen display -->
+                                    <rect x="60" y="48" width="80" height="42" rx="8" fill="#0d0e12" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                                    <!-- Eyes -->
+                                    <circle cx="85" cy="65" r="5" fill="#06b6d4" class="hero-ai-eye"/>
+                                    <circle cx="115" cy="65" r="5" fill="#06b6d4" class="hero-ai-eye"/>
+                                    <!-- Smile -->
+                                    <path d="M 92,80 Q 100,86 108,80" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+                                    <!-- Ears / Antennas -->
+                                    <circle cx="100" cy="22" r="4" fill="#06b6d4"/>
+                                    <line x1="100" y1="22" x2="100" y2="40" stroke="#06b6d4" stroke-width="2"/>
+                                    <rect x="42" y="60" width="8" height="20" rx="4" fill="#8b5cf6"/>
+                                    <rect x="150" y="60" width="8" height="20" rx="4" fill="#8b5cf6"/>
+                                    <!-- Floating data particles -->
+                                    <circle cx="35" cy="40" r="3" fill="#8b5cf6" opacity="0.6"/>
+                                    <circle cx="170" cy="90" r="2.5" fill="#06b6d4" opacity="0.6"/>
+                                    <circle cx="160" cy="30" r="2.5" fill="#8b5cf6" opacity="0.4"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Gamified Quiz Result Summary Panel (Visible only if quiz completed) -->
+                        <div class="card glass-card hidden fade-in" id="quiz-results-summary-card" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(6,182,212,0.05) 100%); border-color: rgba(99,102,241,0.25);">
+                            <div class="card-header" style="border-bottom: 1px dashed var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                                <div class="header-icon" style="background: rgba(16,185,129,0.1); color: var(--success);"><i data-lucide="check-circle"></i></div>
+                                <div>
+                                    <h2 style="font-size: 1.25rem;">Skill Challenge Completed Successfully!</h2>
+                                    <p>You have successfully analyzed your career path via interactive quiz scoring.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid-4" style="margin-bottom: 1.5rem;">
+                                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px;">
+                                    <span class="stat-label">Quiz Score</span>
+                                    <h3 style="font-size: 1.5rem; margin-top: 0.25rem; color: white;" id="quiz-summary-score">0 / 5</h3>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px;">
+                                    <span class="stat-label">Accuracy Rate</span>
+                                    <h3 style="font-size: 1.5rem; margin-top: 0.25rem; color: #10b981;" id="quiz-summary-accuracy">0%</h3>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px;">
+                                    <span class="stat-label">XP Earned</span>
+                                    <h3 style="font-size: 1.5rem; margin-top: 0.25rem; color: #fbbf24;" id="quiz-summary-xp">+0 XP</h3>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px;">
+                                    <span class="stat-label">Time Remaining</span>
+                                    <h3 style="font-size: 1.5rem; margin-top: 0.25rem; color: #06b6d4;" id="quiz-summary-time">0s</h3>
+                                </div>
+                            </div>
+
+                            <div id="quiz-summary-unlocked-badge-box" class="hidden" style="padding: 1rem; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; display: flex; align-items: center; gap: 1rem;">
+                                <div class="badge-glowing-glow" style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(139,92,246,0.15); font-size: 1.5rem; box-shadow: 0 0 10px rgba(139,92,246,0.3);" id="quiz-summary-badge-icon">🏆</div>
+                                <div style="text-align: left;">
+                                    <h4 style="font-size: 0.85rem; color: white; margin: 0;">Achievement Unlocked: <span id="quiz-summary-badge-name">Explorer</span></h4>
+                                    <p style="font-size: 0.75rem; color: var(--text-secondary); margin: 0;" id="quiz-summary-badge-desc">Start your career exploration journey.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4-Column Key Metrics Section -->
+                        <div class="dashboard-stats-grid fade-in">
+                            <!-- Career Match -->
+                            <div class="stat-card stat-career-match">
+                                <div class="stat-icon-wrapper"><i data-lucide="compass"></i></div>
+                                <div class="stat-details">
+                                    <span class="stat-label">Recommended Path</span>
+                                    <h3 class="stat-value" id="stat-val-career-match">N/A</h3>
+                                    <span class="stat-subtext" id="stat-sub-career-match">Complete assessment</span>
+                                </div>
+                            </div>
+                            <!-- Resume Score -->
+                            <div class="stat-card stat-resume-score" onclick="switchToTab('resume')" style="cursor: pointer;">
+                                <div class="stat-icon-wrapper"><i data-lucide="file-check-2"></i></div>
+                                <div class="stat-details">
+                                    <span class="stat-label">Resume Score</span>
+                                    <h3 class="stat-value" id="stat-val-resume-score">0%</h3>
+                                    <span class="stat-subtext" id="stat-sub-resume-score">ATS Match Level</span>
+                                </div>
+                            </div>
+                            <!-- Skill Readiness -->
+                            <div class="stat-card stat-skill-readiness">
+                                <div class="stat-icon-wrapper"><i data-lucide="gauge"></i></div>
+                                <div class="stat-details">
+                                    <span class="stat-label">Skill Readiness</span>
+                                    <h3 class="stat-value" id="stat-val-skill-readiness">0/10</h3>
+                                    <span class="stat-subtext" id="stat-sub-skill-readiness">Technical index score</span>
+                                </div>
+                            </div>
+                            <!-- Employability Score -->
+                            <div class="stat-card stat-employability">
+                                <div class="stat-icon-wrapper"><i data-lucide="activity"></i></div>
+                                <div class="stat-details">
+                                    <span class="stat-label">Employability Index</span>
+                                    <h3 class="stat-value" id="stat-val-employability">0%</h3>
+                                    <span class="stat-subtext" id="stat-sub-employability">Predicted readiness</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Row 1: Score & Radar Chart -->
+                        <div class="grid-2-3">
+                            <!-- Employability Score Card -->
+                            <div class="card glass-card fade-in delay-1 flex-center">
+                                <h3 class="card-title"><i data-lucide="gauge"></i> Employability Index</h3>
+                                <div class="gauge-container">
+                                    <svg class="gauge-svg" viewBox="0 0 200 200">
+                                        <circle class="gauge-bg" cx="100" cy="100" r="80"></circle>
+                                        <circle class="gauge-progress" id="gauge-progress-bar" cx="100" cy="100" r="80"></circle>
+                                    </svg>
+                                    <div class="gauge-text">
+                                        <span class="gauge-number" id="result-score">0</span>
+                                        <span class="gauge-percent">%</span>
+                                    </div>
+                                </div>
+                                <div class="score-status" id="result-status">Analyzing...</div>
+                                <p class="score-description" id="result-score-desc">Based on your profile inputs, the model has predicted your overall employability index.</p>
+                            </div>
+
+                            <!-- Radar Chart Card -->
+                            <div class="card glass-card fade-in delay-2">
+                                <h3 class="card-title"><i data-lucide="shield-alert"></i> Skill Profile Dimension</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="skillsRadarChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Row 2: Career Matches & Skill Gap -->
+                        <div class="grid-2">
+                            <!-- Career Matches -->
+                            <div class="card glass-card fade-in delay-3">
+                                <h3 class="card-title"><i data-lucide="compass"></i> Recommended Career Paths</h3>
+                                <div class="career-list" id="career-recommendations-list">
+                                    <!-- Dynamically Generated Career Matches -->
+                                </div>
+                            </div>
+
+                            <!-- Skill Gap Analysis & Roadmap -->
+                            <div class="card glass-card fade-in delay-4">
+                                <h3 class="card-title"><i data-lucide="git-pull-request"></i> Skill Gap & Action Plan</h3>
+                                <div class="roadmap-timeline" id="skill-gap-roadmap">
+                                    <!-- Dynamically Generated Roadmap Steps -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Row 3: Company Targets & Vacancy Recommendations -->
+                        <div class="grid-2">
+                            <!-- Company Targets Visualization -->
+                            <div class="card glass-card fade-in delay-4">
+                                <h3 class="card-title"><i data-lucide="bar-chart-3"></i> Target Employers & Packages</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="companyTargetChart"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- Vacancy Recommendations -->
+                            <div class="card glass-card fade-in delay-4">
+                                <h3 class="card-title"><i data-lucide="briefcase"></i> Active Vacancies & Openings</h3>
+                                <div class="career-list" id="vacancy-recommendations-list">
+                                    <!-- Dynamically Generated Vacancies -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Row 4: Profile Advancement Milestones -->
+                        <div style="margin-bottom: 2rem;">
+                            <div class="card glass-card fade-in delay-4">
+                                <h3 class="card-title"><i data-lucide="milestone"></i> Profile Advancement Milestones</h3>
+                                <div class="milestones-horizontal-map" style="margin-top: 1.5rem;">
+                                    <div class="milestone-node completed">
+                                        <div class="milestone-icon-wrapper"><i data-lucide="check-circle-2"></i></div>
+                                        <div class="milestone-info">
+                                            <h4>Profile Scanned</h4>
+                                            <p>Academic credentials & soft skills analyzed.</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-connector completed"></div>
+                                    <div class="milestone-node active">
+                                        <div class="milestone-icon-wrapper"><i data-lucide="cpu"></i></div>
+                                        <div class="milestone-info">
+                                            <h4>Identify Gaps</h4>
+                                            <p>Match skills against recommended role.</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-connector"></div>
+                                    <div class="milestone-node">
+                                        <div class="milestone-icon-wrapper"><i data-lucide="file-check-2"></i></div>
+                                        <div class="milestone-info">
+                                            <h4>Resume Match</h4>
+                                            <p>Optimize keywords & score with ATS Analyzer.</p>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-connector"></div>
+                                    <div class="milestone-node">
+                                        <div class="milestone-icon-wrapper"><i data-lucide="send"></i></div>
+                                        <div class="milestone-info">
+                                            <h4>Ready to Apply</h4>
+                                            <p>Target vacancies & secure top packages.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: AI Career Coach Chat -->
+                        <div class="card glass-card fade-in delay-5 chat-card">
+                            <div class="chat-header">
+                                <div class="chat-coach-profile">
+                                    <div class="coach-avatar-container">
+                                        <div class="coach-avatar"><i data-lucide="bot"></i></div>
+                                    </div>
+                                    <div>
+                                        <h3>Aura</h3>
+                                        <p class="status-online" id="chat-engine-badge">AI Career Counselor • Online</p>
+                                    </div>
+                                </div>
+                                <div class="chat-actions">
+                                    <span class="badge" id="chat-mode-badge">Context-Aware Guidance</span>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-messages" id="chat-messages-container">
+                                <!-- Chat Messages will appear here -->
+                            </div>
+
+                            <div class="chat-suggested-questions" id="chat-suggestions">
+                                <!-- Suggested Questions will appear here -->
+                            </div>
+
+                            <div class="chat-input-area">
+                                <input type="text" id="chat-user-input" placeholder="Ask Aura about your roadmap, career options, or how to improve..." onkeydown="if(event.key === 'Enter') sendChatMessage()">
+                                <button class="btn btn-primary btn-icon" onclick="sendChatMessage()">
+                                    <i data-lucide="send"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 2: RESUME ANALYZER PANEL -->
+                <div id="panel-resume" class="tab-panel">
+                    <section class="card glass-card fade-in">
+                        <div class="card-header">
+                            <div class="header-icon"><i data-lucide="file-text"></i></div>
+                            <div>
+                                <h2>AI Resume Analyzer</h2>
+                                <p>Upload your resume to analyze its keyword strength, detect skill gaps, and check alignment against career paths.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <!-- Upload Area -->
+                            <div class="resume-upload-column">
+                                <div class="upload-zone" id="resume-drop-zone">
+                                    <i data-lucide="upload-cloud" class="upload-icon"></i>
+                                    <h3>Drag & Drop Resume</h3>
+                                    <p>Supports <strong>.txt</strong> and <strong>.pdf</strong> files directly.</p>
+                                    <input type="file" id="resume-file-input" accept=".txt,.pdf" class="hidden" onchange="handleResumeUpload(event)">
+                                    <button class="btn btn-secondary btn-sm" onclick="document.getElementById('resume-file-input').click()">Browse Files</button>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 1.5rem;">
+                                    <label for="resume-text-input">Or Paste Resume Text</label>
+                                    <textarea id="resume-text-input" rows="8" placeholder="Paste the content of your resume here..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="resume-target-role">Target Role Alignment</label>
+                                    <select id="resume-target-role">
+                                        <option value="Software Engineer">Software Engineer</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="UX/UI Designer">UX/UI Designer</option>
+                                        <option value="Product Manager">Product Manager</option>
+                                        <option value="UPSC Civil Services (IAS/IPS)">UPSC Civil Services</option>
+                                        <option value="MPSC State Services (DySP/Deputy Collector)">MPSC State Services</option>
+                                        <option value="Railway Recruitment Board (RRB Officer)">Railway Officer</option>
+                                        <option value="Banking Officer (SBI PO / IBPS)">Banking Officer</option>
+                                        <option value="Government Teacher (TET/NET Educator)">Government Teacher</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-primary w-100" id="btn-analyze-resume" onclick="analyzeResume()">
+                                    <span id="btn-resume-text">Analyze Resume</span>
+                                    <div class="spinner hidden" id="btn-resume-spinner"></div>
+                                </button>
+                            </div>
+
+                            <!-- Analysis Results -->
+                            <div class="resume-results-column flex-center hidden" id="resume-results-card">
+                                <div class="resume-score-circle">
+                                    <span class="resume-score-num" id="resume-score-val">0</span>
+                                    <span class="resume-score-label">Resume Score</span>
+                                </div>
+                                <h3 id="resume-score-grade" style="margin-top: 1rem; font-size: 1.25rem;">Good Match</h3>
+                                <p id="resume-summary" style="font-size: 0.85rem; color: var(--text-secondary); text-align: center; margin-top: 0.5rem; max-width: 320px;">
+                                    Your resume matches the target role, but has missing keywords.
+                                </p>
+
+                                <div class="resume-analysis-details w-100" style="margin-top: 1.5rem; text-align: left;">
+                                    <h4 class="subsection-title" style="font-size: 0.95rem; margin-bottom: 0.75rem;"><i data-lucide="check-circle" style="color: var(--success); width:16px; vertical-align:middle; margin-right:5px;"></i> Detected Skills</h4>
+                                    <div class="resume-detected-tags" id="resume-detected-skills">
+                                        <!-- Tags -->
+                                    </div>
+
+                                    <h4 class="subsection-title" style="font-size: 0.95rem; margin-top: 1.5rem; margin-bottom: 0.75rem;"><i data-lucide="x-circle" style="color: var(--danger); width:16px; vertical-align:middle; margin-right:5px;"></i> Missing Core Skills</h4>
+                                    <div class="resume-detected-tags" id="resume-missing-skills">
+                                        <!-- Tags -->
+                                    </div>
+
+                                    <h4 class="subsection-title" style="font-size: 0.95rem; margin-top: 1.5rem; margin-bottom: 0.75rem;"><i data-lucide="lightbulb" style="color: var(--warning); width:16px; vertical-align:middle; margin-right:5px;"></i> Improvement Recommendations</h4>
+                                    <ul class="resume-tips-list" id="resume-tips">
+                                        <!-- Tips -->
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Placeholder when no analysis -->
+                            <div class="resume-results-placeholder flex-center" id="resume-placeholder-card" style="padding: 2.5rem; text-align: center;">
+                                <div class="resume-svg-illustration-container" style="width: 140px; height: 140px; margin-bottom: 1.5rem; position: relative;">
+                                    <svg viewBox="0 0 100 100" width="100%" height="100%" class="resume-svg-doc">
+                                        <defs>
+                                            <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#8b5cf6"/>
+                                                <stop offset="100%" stop-color="#06b6d4"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <!-- Document Shape -->
+                                        <path d="M63,15 L75,27 L75,79 C75,82.3 72.3,85 69,85 L31,85 C27.7,85 25,82.3 25,79 L25,21 C25,17.7 27.7,15 31,15 Z" fill="rgba(255,255,255,0.01)" stroke="url(#docGrad)" stroke-width="1.5"/>
+                                        <path d="M 63,15 L 63,27 L 75,27" fill="rgba(255,255,255,0.05)" stroke="url(#docGrad)" stroke-width="1.5"/>
+                                        
+                                        <!-- Lines on resume -->
+                                        <line x1="35" y1="35" x2="65" y2="35" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="35" y1="45" x2="55" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="35" y1="55" x2="60" y2="55" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="35" y1="65" x2="50" y2="65" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+                                        
+                                        <!-- Magnifying Glass scanning -->
+                                        <g class="float-group">
+                                            <circle cx="62" cy="62" r="10" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="1.5"/>
+                                            <line x1="69" y1="69" x2="79" y2="79" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+                                        </g>
+                                    </svg>
+                                    <!-- Glow scan line -->
+                                    <div class="resume-scan-laser"></div>
+                                </div>
+                                <h3>Ready for Analysis</h3>
+                                <p style="color: var(--text-secondary); text-align: center; max-width: 280px; font-size: 0.85rem;">Upload or paste your resume and click Analyze to receive a score and keyword audit.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 3: ASSESSMENT HISTORY PANEL -->
+                <div id="panel-history" class="tab-panel">
+                    <section class="card glass-card fade-in">
+                        <div class="card-header">
+                            <div class="header-icon"><i data-lucide="history"></i></div>
+                            <div>
+                                <h2>Your Career Assessment History</h2>
+                                <p>Review and reload your previous evaluations to track your upskilling progress.</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-timeline" id="history-timeline-container" style="padding-left: 2rem;">
+                            <!-- Dynamically Loaded History Cards -->
+                        </div>
+
+                        <div class="flex-center hidden" id="history-empty-state" style="padding: 3rem 0;">
+                            <i data-lucide="folder-open" style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                            <h3>No Assessments Found</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">Complete the profile builder in the Career Predictor tab to save your first evaluation.</p>
+                            <button class="btn btn-primary" style="margin-top: 1.25rem;" onclick="switchToTab('assessment')">Start Assessment</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 4: PROFILE & PORTFOLIO PANEL -->
+                <div id="panel-profile" class="tab-panel">
+                    <div class="grid-2">
+                        <!-- Profile Card -->
+                        <section class="card glass-card fade-in" style="overflow: hidden; padding: 0;">
+                            <div class="profile-banner" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.45) 0%, rgba(6, 182, 212, 0.45) 100%); height: 100px; width: 100%; border-bottom: 1px solid var(--border-color);"></div>
+                            <div style="padding: 1.5rem 2rem 2rem 2rem;">
+                                <div class="flex-center" style="margin-top: -65px; margin-bottom: 2rem; position: relative; z-index: 2;">
+                                    <div class="user-avatar-container large-avatar" style="border: 4px solid #121420; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+                                        <img id="user-profile-avatar" src="" alt="Avatar" class="user-avatar hidden">
+                                        <div id="user-profile-avatar-fallback" class="user-avatar-fallback" style="background: #1e1b4b;"><i data-lucide="user" style="width: 42px; height: 42px; color: var(--accent);"></i></div>
+                                    </div>
+                                    <h2 id="user-profile-name" style="margin-top: 1rem;">Guest</h2>
+                                    <p style="color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem;">Hiring Candidate</p>
+                                
+                                <div style="margin-top: 1.25rem; display: flex; gap: 0.5rem;">
+                                    <input type="file" id="avatar-file-input" accept="image/*" class="hidden" onchange="handleAvatarUpload(event)">
+                                    <button class="btn btn-secondary btn-sm" onclick="document.getElementById('avatar-file-input').click()">
+                                        <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Upload Photo
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm" onclick="deleteAvatar()" style="color: var(--danger);">
+                                        <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                                <h4 class="subsection-title" style="margin-bottom: 1rem;">Account Details</h4>
+                                <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Portal Username:</span>
+                                        <strong id="profile-detail-username">Guest</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Email Address:</span>
+                                        <strong id="profile-detail-email">N/A</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Mobile Number:</span>
+                                        <strong id="profile-detail-mobile">N/A</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Preferred Sector:</span>
+                                        <strong id="profile-detail-domain">N/A</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Last Evaluation Score:</span>
+                                        <strong id="profile-detail-score">N/A</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: var(--text-secondary);">Account Created:</span>
+                                        <strong id="profile-detail-created">N/A</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- Portfolio / Certificate Gallery -->
+                        <section class="card glass-card fade-in">
+                            <h3 class="card-title"><i data-lucide="file-image"></i> Certificates & Credentials</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Upload and showcase your degree certificates, credentials, and achievements. Files are saved locally in your browser's secure database.</p>
+                            
+                            <div class="upload-zone" id="cert-drop-zone" style="padding: 1.5rem; border-style: dashed; border-width: 2px; text-align: center; border-radius: 12px; margin-bottom: 2rem;">
+                                <i data-lucide="image" class="upload-icon" style="width: 32px; height: 32px; margin-bottom: 0.5rem;"></i>
+                                <h4 style="font-size: 0.95rem;">Upload Certificate Image</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Supports JPG, PNG, WebP</p>
+                                <input type="file" id="cert-file-input" accept="image/*" class="hidden" onchange="handleCertificateUpload(event)">
+                                <button class="btn btn-secondary btn-sm" onclick="document.getElementById('cert-file-input').click()">Select Image</button>
+                            </div>
+
+                            <h4 class="subsection-title" style="margin-bottom: 1rem;">Credential Gallery</h4>
+                            <div class="portfolio-gallery" id="portfolio-gallery">
+                                <!-- Dynamic Certificate Images -->
+                            </div>
+                            
+                            <div class="flex-center" id="portfolio-empty-state" style="padding: 2rem 0; color: var(--text-muted);">
+                                <i data-lucide="image" style="width: 36px; height: 36px; margin-bottom: 0.5rem;"></i>
+                                <p style="font-size: 0.85rem;">No certificates uploaded yet.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- TAB: ABOUT US PANEL -->
+                <div id="panel-about" class="tab-panel">
+                    <section class="card glass-card fade-in">
+                        <div class="card-header" style="margin-bottom: 2rem;">
+                            <div class="header-icon"><i data-lucide="help-circle"></i></div>
+                            <div>
+                                <h2>About PathFinder AI</h2>
+                                <p>Learn more about our mission, AI technologies, and our vision for career guidance.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-2" style="gap: 2.5rem; margin-bottom: 3rem;">
+                            <div style="text-align: left;">
+                                <h3 style="font-size: 1.25rem; color: white; margin-bottom: 1rem;">Our Mission</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                                    PathFinder is dedicated to helping students and aspiring professionals navigate their career journeys. By leveraging advanced artificial intelligence, we analyze complex profiles and map them to standard industry roles, helping you make informed career choices with confidence.
+                                </p>
+                                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                                    Our platform combines cutting-edge predictive modeling with actual learning curriculums, books, and industry benchmarks, bridging the gap between student aspirations and career readiness.
+                                </p>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                                <div class="badge-glowing-glow" style="background: rgba(139,92,246,0.15); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(139,92,246,0.3); margin-bottom: 1rem; color: var(--accent);">
+                                    <i data-lucide="sparkles" style="width: 28px; height: 28px;"></i>
+                                </div>
+                                <h4 style="color: white; font-size: 1.1rem; margin-bottom: 0.5rem;">AI-Driven Mentorship</h4>
+                                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Personalized roadmap milestones, automated ATS keyword checks, and conversational career counseling with Aura AI Coach.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-bottom: 1.5rem;">Core Platform Pillars</h3>
+                        <div class="grid-4" style="gap: 1rem; margin-bottom: 3rem;">
+                            <div class="card glass-card" style="padding: 1.25rem; text-align: left;">
+                                <div style="color: var(--accent); margin-bottom: 0.75rem;"><i data-lucide="compass" style="width: 24px; height: 24px;"></i></div>
+                                <h4 style="color: white; font-size: 0.95rem; margin-bottom: 0.5rem;">Career Guidance</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">Machine learning evaluations matching academic profiles directly to fitting job domains.</p>
+                            </div>
+                            <div class="card glass-card" style="padding: 1.25rem; text-align: left;">
+                                <div style="color: #10b981; margin-bottom: 0.75rem;"><i data-lucide="file-check-2" style="width: 24px; height: 24px;"></i></div>
+                                <h4 style="color: white; font-size: 0.95rem; margin-bottom: 0.5rem;">Resume Analytics</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">Automated parser calculating keyword ATS alignment and tracking profile highlights.</p>
+                            </div>
+                            <div class="card glass-card" style="padding: 1.25rem; text-align: left;">
+                                <div style="color: #fbbf24; margin-bottom: 0.75rem;"><i data-lucide="award" style="width: 24px; height: 24px;"></i></div>
+                                <h4 style="color: white; font-size: 0.95rem; margin-bottom: 0.5rem;">Skill Assessments</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">Gamified Skill Challenges awarding XP points and unlocking achievement badges.</p>
+                            </div>
+                            <div class="card glass-card" style="padding: 1.25rem; text-align: left;">
+                                <div style="color: #06b6d4; margin-bottom: 0.75rem;"><i data-lucide="milestone" style="width: 24px; height: 24px;"></i></div>
+                                <h4 style="color: white; font-size: 0.95rem; margin-bottom: 0.5rem;">Milestone Roadmaps</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">Horizontal flows outlining phase actions, exam goals, and portfolio projects.</p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 1px solid var(--border-color); background: linear-gradient(135deg, rgba(99,102,241,0.02) 0%, rgba(139,92,246,0.02) 100%); border-radius: 12px; padding: 2rem; text-align: center;">
+                            <h3 style="font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">Our Vision</h3>
+                            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6; font-size: 0.9rem;">
+                                We envision a world where career guidance is democratized and easily accessible to all candidates regardless of their location. By utilizing localized predictive models and Gemini-powered analytics, we aim to equip every student with their own personalized 24/7 AI mentor.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: CONTACT US PANEL -->
+                <div id="panel-contact" class="tab-panel">
+                    <div class="grid-2">
+                        <!-- Contact Form Panel -->
+                        <section class="card glass-card fade-in" style="text-align: left;">
+                            <h3 class="card-title" style="margin-bottom: 0.5rem;"><i data-lucide="mail"></i> Get In Touch</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Submit your questions, feedback, or business inquiries. Our support team will get back to you shortly.</p>
+                            
+                            <form id="contact-form" onsubmit="submitContactForm(event)">
+                                <div class="form-group">
+                                    <label for="contact-name">Full Name</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="user" class="input-icon"></i>
+                                        <input type="text" id="contact-name" placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="at-sign" class="input-icon"></i>
+                                        <input type="email" id="contact-email" placeholder="john@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-subject">Subject</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="bookmark" class="input-icon"></i>
+                                        <input type="text" id="contact-subject" placeholder="e.g., Business Partnership" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message">Message</label>
+                                    <textarea id="contact-message" rows="5" placeholder="Write your message details..." required style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); color: white; padding: 0.75rem; font-family: inherit; border-radius: 12px; resize: vertical; width: 100%;"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+                                    Send Message <i data-lucide="send" style="width: 14px; height: 14px; margin-left: 4px; vertical-align: middle;"></i>
+                                </button>
+                            </form>
+
+                            <!-- Success Dialog (Hidden initially) -->
+                            <div class="flex-center hidden" id="contact-success-state" style="padding: 3rem 1rem;">
+                                <div class="badge-glowing-glow" style="background: rgba(16,185,129,0.15); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(16,185,129,0.3); margin-bottom: 1.5rem; color: #10b981;">
+                                    <i data-lucide="check-circle" style="width: 32px; height: 32px;"></i>
+                                </div>
+                                <h3 style="color: white; margin: 0;">Message Sent!</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; max-width: 280px; line-height: 1.5;">Thank you for contacting us. Our team has received your ticket and will reply to you at support@pathfinder.ai within 24 hours.</p>
+                                <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.5rem;" onclick="resetContactForm()">Send Another Message</button>
+                            </div>
+                        </section>
+
+                        <!-- Info and FAQs Column -->
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <!-- Info Panel -->
+                            <section class="card glass-card fade-in" style="padding: 1.5rem; text-align: left;">
+                                <h3 style="font-size: 1.05rem; color: white; margin-bottom: 1.25rem;"><i data-lucide="building" style="color: var(--accent); vertical-align: middle; margin-right: 6px;"></i> Support & Address</h3>
+                                <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <i data-lucide="mail" style="color: var(--accent); width: 16px; height: 16px;"></i>
+                                        <span>Support Email: <a href="mailto:support@pathfinder.ai" style="color: white; text-decoration: none;">support@pathfinder.ai</a></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <i data-lucide="clock" style="color: var(--accent); width: 16px; height: 16px;"></i>
+                                        <span>Business Hours: Mon - Fri, 9:00 AM - 6:00 PM EST</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <i data-lucide="share-2" style="color: var(--accent); width: 16px; height: 16px;"></i>
+                                        <span style="display: flex; gap: 0.5rem;">
+                                            Socials: 
+                                            <a href="#" style="color: white; text-decoration: none; font-weight: bold;">LinkedIn</a> • 
+                                            <a href="#" style="color: white; text-decoration: none; font-weight: bold;">Twitter</a> • 
+                                            <a href="#" style="color: white; text-decoration: none; font-weight: bold;">GitHub</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- FAQs panel -->
+                            <section class="card glass-card fade-in" style="padding: 1.5rem; text-align: left;">
+                                <h3 style="font-size: 1.05rem; color: white; margin-bottom: 1rem;"><i data-lucide="help-circle" style="color: #fbbf24; vertical-align: middle; margin-right: 6px;"></i> Frequently Asked Questions</h3>
+                                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                    <div style="padding: 0.75rem; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); border-radius: 8px;">
+                                        <h4 style="font-size: 0.8rem; color: white; margin-bottom: 0.25rem;">Is my data saved securely?</h4>
+                                        <p style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4;">Yes, all data, resume parser text, credentials, and achievements are saved locally in your browser's private database storage.</p>
+                                    </div>
+                                    <div style="padding: 0.75rem; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); border-radius: 8px;">
+                                        <h4 style="font-size: 0.8rem; color: white; margin-bottom: 0.25rem;">How does the AI model evaluate profiles?</h4>
+                                        <p style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4;">If you supply a Gemini API Key, it runs real-time LLM predictions. Otherwise, it uses local statistical prediction fallbacks.</p>
+                                    </div>
+                                    <div style="padding: 0.75rem; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); border-radius: 8px;">
+                                        <h4 style="font-size: 0.8rem; color: white; margin-bottom: 0.25rem;">How do I earn XP points?</h4>
+                                        <p style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4;">Complete the Skill Challenge Quiz! You get +100 XP for every correct response.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: PRIVACY POLICY PANEL -->
+                <div id="panel-privacy" class="tab-panel">
+                    <section class="card glass-card fade-in" style="padding: 2.5rem; text-align: left; max-width: 800px; margin: 0 auto;">
+                        <h2 style="font-size: 1.5rem; color: white; margin-bottom: 0.5rem;"><i data-lucide="shield-check" style="color: #10b981; vertical-align: middle; margin-right: 6px;"></i> Privacy Policy</h2>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2rem;">Last Updated: July 8, 2026</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">1. Information We Collect</h3>
+                                <p>We collect basic credentials and profile statistics provided by you during registration and profile building, including Name, Email address, Degree paths, Majors, Skill sets, and local database attachments.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">2. How We Use Your Information</h3>
+                                <p>The information collected is used solely to generate career path recommendations, analyze resume formatting keyword matches, track upskilling history milestones, and update leaderboard metrics.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">3. AI Processing Disclaimer & Resume Uploads</h3>
+                                <p><strong>Resume uploads and AI conversations are processed specifically to provide career guidance and improve your user experience.</strong> If you supply a Google Gemini API key, profile packets are safely sent to Google's LLM endpoints for analysis. We do not store or process these files on external servers.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">4. Cookies & Third-Party Services</h3>
+                                <p>We use local storage cookies to handle active login tokens. Google SSO integration uses secure Google Authentication channels to verify client identities without extracting passwords.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">5. Data Security & Retention</h3>
+                                <p>All portfolio items and credentials are saved locally in browser IndexedDB formats. Data is retained until you delete your account or clear local cache storage.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">6. User Rights & Contact Info</h3>
+                                <p>You have full rights to clear, export, or delete your profile data inside the profile settings panel at any time. For questions, contact us at <a href="mailto:support@pathfinder.ai" style="color: white; text-decoration: none;">support@pathfinder.ai</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: TERMS OF SERVICE PANEL -->
+                <div id="panel-terms" class="tab-panel">
+                    <section class="card glass-card fade-in" style="padding: 2.5rem; text-align: left; max-width: 800px; margin: 0 auto;">
+                        <h2 style="font-size: 1.5rem; color: white; margin-bottom: 0.5rem;"><i data-lucide="scroll" style="color: var(--accent); vertical-align: middle; margin-right: 6px;"></i> Terms of Service</h2>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2rem;">Last Updated: July 8, 2026</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">1. Acceptance of Terms</h3>
+                                <p>By accessing or utilizing the PathFinder portal, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please refrain from using the platform.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">2. User Responsibilities & Acceptable Use</h3>
+                                <p>You are responsible for safeguarding your mock passwords and local profile data. You agree not to upload harmful scripts, execute local CORS injection exploits, or manipulate database records maliciously.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">3. AI and Career Guidance Disclaimer</h3>
+                                <p><strong>AI-generated recommendations, roadmap predictions, and evaluation metrics are for informational purposes only. PathFinder does not guarantee employment, academic admission, recruitment results, or specific career outcomes.</strong> Guidance is subject to change based on actual industry market shifts.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">4. Subscription, Billing & Refund Policy</h3>
+                                <p>Currently, the Pro AI features mock tiers to enhance user interface experiences. No actual credit card billing occurs. In the event of commercial tier launches, subscription policies and refund timelines will be detailed.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">5. Limitation of Liability & Termination</h3>
+                                <p>PathFinder is provided "as is". We are not liable for direct, indirect, or incidental career damages arising from portal recommendations. We reserve rights to restrict portal access for terms violations.</p>
+                            </div>
+                            <div>
+                                <h3 style="color: white; font-size: 1rem; margin-bottom: 0.5rem;">6. Governing Law</h3>
+                                <p>These terms shall be governed by and construed in accordance with standard corporate regulations without regard to conflict of law principles. Contact us at <a href="mailto:support@pathfinder.ai" style="color: white; text-decoration: none;">support@pathfinder.ai</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer" style="text-align: center; padding: 2rem 0; border-top: 1px solid var(--border-color); margin-top: 3rem;">
+            <p>&copy; 2026 PathFinder AI. Powered by client-side predictive intelligence. Built for career readiness.</p>
+            <div style="margin-top: 0.75rem; display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8rem;">
+                <a href="javascript:void(0)" onclick="switchToTab('about')" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition-smooth); font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--text-secondary)'">About Us</a>
+                <a href="javascript:void(0)" onclick="switchToTab('contact')" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition-smooth); font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--text-secondary)'">Contact Us</a>
+                <a href="javascript:void(0)" onclick="switchToTab('privacy')" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition-smooth); font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--text-secondary)'">Privacy Policy</a>
+                <a href="javascript:void(0)" onclick="switchToTab('terms')" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition-smooth); font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--text-secondary)'">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Quiz Setup Confirm Modal -->
+    <div id="quiz-setup-modal" class="auth-overlay hidden">
+        <div class="card glass-card auth-card" style="max-width: 440px; padding: 2rem; border-radius: 16px; background-color: rgba(18, 20, 32, 0.9) !important; border: 1px solid var(--border-color); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+            <div class="auth-header">
+                <div class="logo-icon" style="background: rgba(99,102,241,0.1); color: var(--primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem auto;"><i data-lucide="play-circle"></i></div>
+                <h2>Start Skill Challenge</h2>
+                <p>Verify your details before launching the quiz.</p>
+            </div>
+            <form onsubmit="launchChallengeQuiz(event)">
+                <div class="form-group">
+                    <label for="quiz-setup-name">Full Name</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="user" class="input-icon"></i>
+                        <input type="text" id="quiz-setup-name" placeholder="John Doe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quiz-setup-degree">Degree Path</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="graduation-cap" class="input-icon"></i>
+                        <select id="quiz-setup-degree" required>
+                            <option value="B.S." selected>Bachelor of Science (B.S. / B.Tech / B.Sc)</option>
+                            <option value="M.S.">Master of Science (M.S. / M.Tech / M.Sc)</option>
+                            <option value="B.A.">Bachelor of Arts (B.A.)</option>
+                            <option value="B.B.A.">Bachelor of Business Admin (B.B.A. / B.Com)</option>
+                            <option value="Ph.D.">Doctor of Philosophy (Ph.D.)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quiz-setup-major">Field of Study / Major</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="book-open" class="input-icon"></i>
+                        <select id="quiz-setup-major" required>
+                            <option value="Computer Science" selected>Computer Science / IT</option>
+                            <option value="Engineering">Engineering (Mech/ECE/Civil)</option>
+                            <option value="Business Admin">Business Administration / Finance</option>
+                            <option value="Arts & Sciences">Humanities / Arts & Sciences</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quiz-setup-sector">Preferred Sector</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="building" class="input-icon"></i>
+                        <select id="quiz-setup-sector" required>
+                            <option value="both" selected>Both (Private & Government)</option>
+                            <option value="private">Private Sector (IT & Corporate)</option>
+                            <option value="government">Government Exams (UPSC, Banking, etc.)</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary flex-1" onclick="closeQuizSetupModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary flex-1">Launch Quiz</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>

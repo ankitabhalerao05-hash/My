@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #07090e;
+  --bg-overlay: rgba(7, 9, 14, 0.85);
+  --bg-card: rgba(18, 20, 32, 0.4);
+  --bg-card-hover: rgba(18, 20, 32, 0.6);
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-color-hover: rgba(255, 255, 255, 0.12);
+  
+  --primary: #8b5cf6;
+  --primary-glow: rgba(139, 92, 246, 0.15);
+  --secondary: #6366f1;
+  --secondary-glow: rgba(99, 102, 241, 0.1);
+  --accent: #06b6d4;
+  
+  --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.1);
+  --warning: #fbbf24;
+  --warning-glow: rgba(251, 191, 36, 0.1);
+  --danger: #f43f5e;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --font-sans: 'Outfit', sans-serif;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-glow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme {
+  --bg-dark: #f1f5f9;
+  --bg-overlay: rgba(241, 245, 249, 0.85);
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --border-color-hover: rgba(15, 23, 42, 0.16);
+  
+  --primary: #4f46e5;
+  --primary-glow: rgba(79, 70, 229, 0.1);
+  --secondary: #7c3aed;
+  --secondary-glow: rgba(124, 58, 237, 0.08);
+  --accent: #0f766e;
+  
+  --success: #059669;
+  --success-glow: rgba(5, 150, 105, 0.1);
+  --warning: #d97706;
+  --warning-glow: rgba(217, 119, 6, 0.1);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+}
+
+/* Base Body Config */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Components */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-color-hover);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+body.light-theme .glass-input {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.glass-input:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+body.light-theme .glass-input:focus {
+  background: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.1);
+  border-color: #f1f5f9;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(139, 92, 246, 0.4); }
+}
+
+.floating-illust {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulsing-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+/* Shimmer layout effects */
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Custom Overrides for Light Mode inline styling fallback */
+body.light-theme [style*="color: white"],
+body.light-theme [style*="color:white"],
+body.light-theme [style*="color: #fff"],
+body.light-theme [style*="color:#fff"],
+body.light-theme [style*="color: rgba(255, 255, 255"],
+body.light-theme [style*="color:rgba(255,255,255"] {
+    color: var(--text-primary) !important;
+}
+
+body.light-theme .text-white,
+body.light-theme .text-slate-100,
+body.light-theme .text-slate-200,
+body.light-theme .text-slate-300 {
+    color: var(--text-primary) !important;
+}
+
+body.light-theme .text-slate-400,
+body.light-theme .text-slate-500 {
+    color: var(--text-secondary) !important;
+}
+
+body.light-theme .text-slate-650,
+body.light-theme .text-slate-600 {
+    color: var(--text-muted) !important;
+}
+
+body.light-theme .text-violet-300,
+body.light-theme .text-violet-400 {
+    color: var(--primary) !important;
+}
+
+body.light-theme .text-cyan-400 {
+    color: var(--accent) !important;
+}
+
+body.light-theme .text-emerald-400 {
+    color: var(--success) !important;
+}
+
+body.light-theme .text-amber-400 {
+    color: var(--warning) !important;
+}
+
+/* Backgrounds & border colors modifications */
+body.light-theme .bg-white\/5 {
+    background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+body.light-theme .bg-white\/10 {
+    background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .border-white\/5 {
+    border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .border-white\/10 {
+    border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+body.light-theme .hover\:bg-white\/5:hover {
+    background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+body.light-theme .hover\:bg-white\/10:hover {
+    background-color: rgba(15, 23, 42, 0.09) !important;
+}
+
+/* Custom cards and headers mappings */
+body.light-theme .glass-card,
+body.light-theme .card {
+    background-color: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.1) !important;
+    color: var(--text-primary) !important;
+}
+
+body.light-theme .glass-card h2,
+body.light-theme .glass-card h3,
+body.light-theme .glass-card h4,
+body.light-theme .card h2,
+body.light-theme .card h3,
+body.light-theme .card h4 {
+    color: var(--text-primary) !important;
+}
+
+body.light-theme .glass-card p,
+body.light-theme .glass-card label,
+body.light-theme .card p,
+body.light-theme .card label {
+    color: var(--text-secondary) !important;
+}
+
+/* Input Fields inside modal overlays */
+body.light-theme .glass-card input,
+body.light-theme .glass-card select,
+body.light-theme .glass-card textarea {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme .glass-card input:focus,
+body.light-theme .glass-card select:focus,
+body.light-theme .glass-card textarea:focus {
+    border-color: var(--primary) !important;
+    outline: none !important;
+}
+
+body.light-theme .bg-gradient-to-r.from-white.to-slate-400 {
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+}
+
+body.light-theme .bg-gradient-to-r.from-violet-400.via-indigo-400.to-cyan-400 {
+    background-image: linear-gradient(to right, var(--primary), var(--secondary), var(--accent)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+body.light-theme .from-violet-950\/20.to-cyan-950\/10 {
+    background-image: linear-gradient(to top right, rgba(79, 70, 229, 0.05), rgba(15, 118, 110, 0.05)) !important;
+}
+
+/* Modal panel card settings */
+.modal-panel {
+    background-color: rgba(18, 20, 32, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.light-theme .modal-panel {
+    background-color: #ffffff !important;
+    border-color: rgba(15, 23, 42, 0.12) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Style browser select option elements */
+select option {
+    background-color: #121420 !important;
+    color: #ffffff !important;
+}
+
+body.light-theme select option {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+

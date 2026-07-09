@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CANDIDATE
+  RECRUITER
+  MENTOR
+  COLLEGE_ADMIN
+  SUPER_ADMIN
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+model User {
+  id                    String            @id @default(uuid())
+  email                 String            @unique
+  passwordHash          String
+  name                  String
+  role                  Role              @default(CANDIDATE)
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+  
+  // Subscription parameters
+  plan                  SubscriptionPlan  @default(FREE)
+  subscriptionEnd       DateTime?
+  stripeCustomerId      String?
+  stripeSubscriptionId  String?
+  
+  // Gamification metrics
+  xp                    Int               @default(0)
+  level                 Int               @default(1)
+  streak                Int               @default(1)
+  lastActive            DateTime          @default(now())
+  badges                String            @default("[]") // JSON stringified array of unlocked badges
+  
+  // Referral Program
+  referralCode          String            @unique @default(dbgenerated()) // We can also populate programmatically
+  referredById          String?
+  referredBy            User?             @relation("Referrals", fields: [referredById], references: [id])
+  referrals             User[]            @relation("Referrals")
+  referralDaysEarned     Int               @default(0)
+  
+  // White Label College connection
+  institutionId         String?
+  institution           Institution?      @relation(fields: [institutionId], references: [id])
+  
+  // Relations
+  resumeScans           ResumeScan[]
+  bookingsAsStudent     Booking[]         @relation("StudentBookings")
+  bookingsAsMentor      Booking[]         @relation("MentorBookings")
+  postedJobs            Job[]             @relation("RecruiterJobs")
+  mentorProfile         Mentor?
+}
+
+model ResumeScan {
+  id                String    @id @default(uuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  score             Int
+  fileName          String
+  keywordsMatched   String    @default("[]") // JSON string array
+  keywordsMissing   String    @default("[]") // JSON string array
+  suggestions       String    @default("[]") // JSON string array
+  grammarIssues     String    @default("[]") // JSON string array
+  roleMatched       String    @default("")
+  createdAt         DateTime  @default(now())
+  version           Int       @default(1)
+}
+
+model Mentor {
+  id                String    @id @default(uuid())
+  userId            String    @unique
+  user              User      @relation(fields: [userId], references: [id])
+  bio               String
+  experience        String
+  skills            String    @default("[]") // JSON array of skills
+  hourlyRate        Float     @default(0.0)
+  availableSlots    String    @default("[]") // JSON string of hours e.g. ["Mon 10:00", "Wed 14:00"]
+  zoomLink          String?
+  rating            Float     @default(5.0)
+  reviewsCount      Int       @default(0)
+}
+
+model Booking {
+  id                String    @id @default(uuid())
+  studentId         String
+  student           User      @relation("StudentBookings", fields: [studentId], references: [id])
+  mentorId          String
+  mentor            User      @relation("MentorBookings", fields: [mentorId], references: [id])
+  slot              String    // e.g. "2026-07-15T10:00:00.000Z"
+  paymentStatus     String    @default("PENDING") // PENDING, PAID
+  stripeSessionId   String?
+  meetingLink       String?
+  createdAt         DateTime  @default(now())
+}
+
+model Job {
+  id                String    @id @default(uuid())
+  recruiterId       String
+  recruiter         User      @relation("RecruiterJobs", fields: [recruiterId], references: [id])
+  title             String
+  companyName       String
+  companyLogo       String?
+  category          String
+  salaryRange       String
+  location          String
+  isRemote          Boolean   @default(false)
+  isFeatured        Boolean   @default(false)
+  isSponsored       Boolean   @default(false)
+  applicationUrl    String
+  expiryDate        DateTime
+  createdAt         DateTime  @default(now())
+  
+  // Analytics
+  clicks            Int       @default(0)
+  views             Int       @default(0)
+  applications      Int       @default(0)
+}
+
+model Bootcamp {
+  id                String    @id @default(uuid())
+  name              String
+  bannerUrl         String?
+  description       String
+  price             Float     @default(0.0)
+  duration          String
+  placementRate     Float     @default(0.0)
+  scholarship       String?
+  affiliateLink     String
+  isSponsored       Boolean   @default(false)
+  category          String
+  createdAt         DateTime  @default(now())
+}
+
+model Institution {
+  id                String    @id @default(uuid())
+  name              String
+  logoUrl           String?
+  customDomain      String?   @unique
+  primaryColor      String    @default("#4f46e5")
+  licenseKey        String    @unique
+  licenseExpiry     DateTime
+  createdAt         DateTime  @default(now())
+  
+  // Relations
+  students          User[]
+}
+
+model AffiliateLink {
+  id                String    @id @default(uuid())
+  title             String
+  provider          String    // Coursera, Udemy, etc.
+  affiliateUrl      String
+  duration          String
+  difficulty        String
+  rating            Float     @default(4.5)
+  price             Float     @default(0.0)
+  discountBadge     String?
+  reason            String
+  createdAt         DateTime  @default(now())
+  
+  // Analytics
+  clicks            Int       @default(0)
+  conversions       Int       @default(0)
+  revenue           Float     @default(0.0)
+}
